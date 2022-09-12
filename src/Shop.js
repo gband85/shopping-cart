@@ -5,8 +5,8 @@ const Shop=()=>{
     return (
         <div>
     <Navbar />
-    <div className="main">
-        <Item />
+    <div className="mai">
+        <Item title={"cat"}/>
     </div>    
     </div>
     )
