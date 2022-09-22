@@ -1,0 +1,17 @@
+.card {
+  /* position: relative; */
+  border-radius: 15px;
+  background-color: rgb(8, 8, 88);
+  padding: 20px;
+}
+.card img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 15px;
+  /* border: 2px red solid; */
+
+  pointer-events: none;
+}
+.card__title {
+  color: white;
+}

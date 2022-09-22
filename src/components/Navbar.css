@@ -1,0 +1,101 @@
+.nav__menu {
+  color: white;
+  background-color: #006699;
+  
+  transition: transform .5s; 
+  transform: translateX(-100%);
+  width: 300px;
+  position: fixed;
+  z-index: 50;
+  height: 100vh;
+  display: block;
+  }
+  .nav-link {
+    color: white;
+  }
+  .nav__menu.show {
+  transform: translateX(0);
+  }
+  .nav__menu__list {
+  list-style: none;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+  }
+  .nav__menu__list a:hover, .navbar__nav__list a:hover {
+  text-decoration: underline;
+  }
+  .navbar {
+    display: flex;
+    position:fixed;
+    padding: 20px;
+    color: #fff;
+    width: 100%;
+    background-color: #006699;
+    justify-content: space-between;
+    font-size: 28px;
+    z-index: 20;
+  }
+  .navbar__brand {
+    font-size: 2rem;
+    color: #fff;
+  }
+  .navbar__brand a {
+    text-decoration: none;
+    font-size: 28px;
+  }
+  .navbar__brand a:visited {
+    color: white;
+  }
+  .navbar__nav {
+    display: none;
+  }
+  .navbar__nav__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 28px;
+  }
+  .menu__btn {
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    background-color:transparent;
+  justify-self: flex-end;
+  border: none;
+  outline: none;
+  }
+  @media  (min-width:768px){
+    .navbar__nav {
+  display: block;
+    }
+  .menu__btn {
+  display: none;
+  }
+  .nav__menu {
+  display: none;
+  }
+  }
+  .close__menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  
+  }
+  .close__menu__btn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  }
+  .close__menu__btn:hover {
+  color: rgb(205, 205, 205);
+  }
