@@ -1,9 +1,9 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Home from './Home';
+import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shop from './Shop';
-import Cart from './Cart';
+import Shop from './components/Shop';
+import Cart from './components/Cart';
 
 function App() {
   return (
