@@ -1,11 +1,13 @@
 import Item from "./Item";
 import { useState } from 'react';
+import uniqid from "uniqid";
 import Navbar from "./Navbar";
 import chicken from '../images/chicken.jpg';
 import groucho from "../images/groucho.jpg";
 import usb_rock from "../images/usb-rock.jpg";
 import useless from "../images/useless.jpg";
 import whoopee from "../images/whoopee.jpg";
+import Cart from "./Cart";
 import './Shop.css'
 
 const Shop=()=>{
@@ -36,15 +38,44 @@ const Shop=()=>{
       itemImage: whoopee,
     },
   ]
-  const [items,setItems]=useState(ITEM_DATA)
-console.log(items)
+  const CART_DATA=
+  
+   [
+    
+      {
+        itemID:  "122866",
+        itemTitle: "Useless Box",
+        itemImage: useless,
+        itemQuantity: "4",
+      },
+      {
+        itemID:  "122867",
+        itemTitle: "Whoopee Cushion",
+        itemImage: whoopee,
+        itemQuantity: "2",
+      },
+    
+  ]
+
+  const [items,setItems]=useState(ITEM_DATA);
+  const [cart,setCart]=useState([]);
+  const addItem=(item)=>{
+ const newCart=[...cart];
+console.log(item)
+newCart.push(item)
+//  console.log(newCart)
+ setCart([...cart,item]);
+console.log(cart)
+  }
+// console.log(items)
     return (
         <div>
     <Navbar />
     <div className="mai">
+    <Cart cart={cart}/>
     <div className="items">
     {items.map(item=>{
-return  <Item id={item.itemID} title={item.itemTitle} image={item.itemImage} />
+return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem}/>
     })}
        
         </div>
