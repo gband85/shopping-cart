@@ -58,24 +58,28 @@ const Shop=()=>{
   ]
 
   const [items,setItems]=useState(ITEM_DATA);
-  const [cart,setCart]=useState([]);
+  const [cartItems,setCartItems]=useState([]);
   const addItem=(item)=>{
- const newCart=[...cart];
+ const newCart=[...cartItems];
 console.log(item)
 newCart.push(item)
 //  console.log(newCart)
- setCart([...cart,item]);
-console.log(cart)
+ setCartItems([...cartItems,item]);
+console.log(cartItems)
+  }
+  const deleteItem=(id)=>{
+    const remainingItems = cartItems.filter((item) => id !== item.itemID);
+    setCartItems(remainingItems);
   }
 // console.log(items)
     return (
         <div>
     <Navbar />
     <div className="mai">
-    <Cart cart={cart}/>
+    <Cart cartItems={cartItems} deleteItem={deleteItem}/>
     <div className="items">
     {items.map(item=>{
-return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem}/>
+return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem} displayItem={true}/>
     })}
        
         </div>
