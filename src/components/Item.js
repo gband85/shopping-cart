@@ -15,17 +15,17 @@ itemImage: props.itemImage,
     props.addItem(item)
   }
   const handleChange=(e)=>{
-setItem({...item,itemQuantity: e.target.value,})
+setItem({...item,itemQuantity: parseInt( e.target.value),})
   }
   
   if (props.displayItem) {
   return (
-    <div class="card">
+    <div className="card">
     <a href={props.href}>
-        <img src={props.itemImage} class="card__img" alt="" id='itemImage'/>
+        <img src={props.itemImage} className="card__img" alt="" id='itemImage'/>
     
       {/* <div class="card__overlay"> */}
-        <h3 class="card__title" id='itemTitle'>{props.itemTitle}</h3>
+        <h3 className="card__title" id='itemTitle'>{props.itemTitle}</h3>
         <form onSubmit={handleSubmit}>
         <input type="number" min="0" max="10" value={item.itemQuantity} onChange={handleChange} id="itemQuantity"/>
         <button type="submit">Add to Cart</button>
@@ -38,12 +38,13 @@ setItem({...item,itemQuantity: e.target.value,})
   }
   else {
     return (
-      <div class="card">
+      <div className="card">
       <a href={props.href}>
-          <img src={props.itemImage} class="card__img" alt="" id='itemImage'/>
+          <img src={props.itemImage} className="card__img" alt="" id='itemImage'/>
       
         {/* <div class="card__overlay"> */}
-          <h3 class="card__title" id='itemTitle'>{props.itemTitle}</h3>
+          <h3 className="card__title" id='itemTitle'>{props.itemTitle}</h3>
+          <h3>Quantity: {props.itemQuantity}</h3>
   <button onClick={()=>props.deleteItem(props.itemID)}>delete</button>
         {/* </div> */}
       </a>
