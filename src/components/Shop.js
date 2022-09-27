@@ -13,27 +13,27 @@ import './Shop.css'
 const Shop=()=>{
   const ITEM_DATA=[
      {
-      itemID: "122863",
+      itemID: 122863,
       itemTitle: "Rubber Chicken",
       itemImage: chicken,
     },
     {
-      itemID:  "122864",
+      itemID:  122864,
       itemTitle: "Groucho Glasses",
       itemImage: groucho,
     },
     {
-      itemID:  "122865",
+      itemID:  122865,
       itemTitle: "USB Pet Rock",
       itemImage: usb_rock,
     },
     {
-      itemID:  "122866",
+      itemID:  122866,
       itemTitle: "Useless Box",
       itemImage: useless,
     },
     {
-      itemID:  "122867",
+      itemID:  122867,
       itemTitle: "Whoopee Cushion",
       itemImage: whoopee,
     },
@@ -59,13 +59,34 @@ const Shop=()=>{
 
   const [items,setItems]=useState(ITEM_DATA);
   const [cartItems,setCartItems]=useState([]);
-  const addItem=(item)=>{
- const newCart=[...cartItems];
-console.log(item)
-newCart.push(item)
+  const addItem=(itemToAdd)=>{
+let newCart;
+ const exist=cartItems.some(function(cartItem) {return cartItem.itemID==itemToAdd.itemID
+ });
+// console.log(exist)
+if (exist) {
+ newCart=cartItems.map(function(cartItem){
+    if (cartItem.itemID==itemToAdd.itemID) {
+    return  {...cartItem,itemQuantity: cartItem.itemQuantity+itemToAdd.itemQuantity}
+    //  cartItem;
+    // console.log(cartItem)
+    }
+    return cartItem
+  })
+  console.log(newCart)
+}
+else {
+newCart=[...cartItems,itemToAdd]
+}
+
+
+
+//  const newCart=exist ? cartItems.map(cartItem=>cartItem.itemID===itemToAdd.itemID ? {...cartItem,itemQuantity: cartItem.itemQuantity+ itemToAdd.itemQuantity}:cartItem) : setCartItems([...cartItems,newCart]);
+// console.log(item)
+// newCart.push(item)
 //  console.log(newCart)
- setCartItems([...cartItems,item]);
-console.log(cartItems)
+ setCartItems(newCart);
+// console.log(cartItems)
   }
   const deleteItem=(id)=>{
     const remainingItems = cartItems.filter((item) => id !== item.itemID);
