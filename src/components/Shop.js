@@ -1,5 +1,5 @@
 import Item from "./Item";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import uniqid from "uniqid";
 import Navbar from "./Navbar";
 import chicken from '../images/chicken.jpg';
@@ -10,7 +10,7 @@ import whoopee from "../images/whoopee.jpg";
 import Cart from "./Cart";
 import './Shop.css'
 
-const Shop=()=>{
+const Shop=(props)=>{
   const ITEM_DATA=[
      {
       itemID: 122863,
@@ -58,46 +58,23 @@ const Shop=()=>{
   ]
 
   const [items,setItems]=useState(ITEM_DATA);
-  const [cartItems,setCartItems]=useState([]);
+
+
   const addItem=(itemToAdd)=>{
-let newCart;
- const exist=cartItems.some(function(cartItem) {return cartItem.itemID==itemToAdd.itemID
- });
-// console.log(exist)
-if (exist) {
- newCart=cartItems.map(function(cartItem){
-    if (cartItem.itemID==itemToAdd.itemID) {
-    return  {...cartItem,itemQuantity: cartItem.itemQuantity+itemToAdd.itemQuantity}
-    //  cartItem;
-    // console.log(cartItem)
-    }
-    return cartItem
-  })
-  console.log(newCart)
-}
-else {
-newCart=[...cartItems,itemToAdd]
-}
+    props.addToCart(itemToAdd);
 
-
-
-//  const newCart=exist ? cartItems.map(cartItem=>cartItem.itemID===itemToAdd.itemID ? {...cartItem,itemQuantity: cartItem.itemQuantity+ itemToAdd.itemQuantity}:cartItem) : setCartItems([...cartItems,newCart]);
-// console.log(item)
-// newCart.push(item)
-//  console.log(newCart)
- setCartItems(newCart);
-// console.log(cartItems)
+// console.log(cart)
   }
   const deleteItem=(id)=>{
-    const remainingItems = cartItems.filter((item) => id !== item.itemID);
-    setCartItems(remainingItems);
+    // const remainingItems = cart.filter((item) => id !== item.itemID);
+    // setCart(remainingItems);
   }
 // console.log(items)
     return (
         <div>
     <Navbar />
     <div className="mai">
-    <Cart cartItems={cartItems} deleteItem={deleteItem}/>
+    <Cart cart={props.cart} deleteItem={deleteItem}/>
     <div className="items">
     {items.map(item=>{
 return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem} displayItem={true}/>
