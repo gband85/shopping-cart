@@ -4,14 +4,60 @@ import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from './components/Shop';
 import Cart from './components/Cart';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [cart,setCart]=useState(JSON.parse(window.localStorage.getItem('cart')))
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('cart');
+    if ( data !== null ) setCart(JSON.parse(data));
+  }, []);
+
+  useEffect(()=>{
+    window.localStorage.setItem('cart',JSON.stringify(cart));
+    },[cart])
+
+  const addToCart=(itemToAdd)=>{
+    let newCart;
+ const exist=cart.some(function(cartItem) {return cartItem.itemID==itemToAdd.itemID
+ });
+// console.log(exist)
+if (exist) {
+ newCart=cart.map(function(cartItem){
+    if (cartItem.itemID==itemToAdd.itemID) {
+    return  {...cartItem,itemQuantity: cartItem.itemQuantity+itemToAdd.itemQuantity}
+    //  cartItem;
+    // console.log(cartItem)
+    }
+    return cartItem
+  })
+  console.log(newCart)
+}
+else {
+newCart=[...cart,itemToAdd]
+}
+
+ setCart(newCart);
+
+  }
+
+
+
+    //  }, [cart])
+// useEffect(()=>{
+//   setCart(JSON.parse(window.localStorage.getItem('cart')));
+// },[])
+    
+
+    // console.log(cartItems)
+
   return (
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")}/>} />
+      <Route path="/cart" element={<Cart cart={cart}/>} />
     </Routes>
   </BrowserRouter>
 
