@@ -66,6 +66,8 @@ const Shop=(props)=>{
 // console.log(cart)
   }
   const deleteItem=(id)=>{
+    props.deleteItem(id)
+    // console.log("shop!")
     // const remainingItems = cart.filter((item) => id !== item.itemID);
     // setCart(remainingItems);
   }
@@ -74,7 +76,7 @@ const Shop=(props)=>{
         <div>
     <Navbar />
     <div className="mai">
-    <Cart cart={props.cart} deleteItem={deleteItem}/>
+    <Cart cart={props.cart} deleteItem={deleteItem} count={props.count}/>
     <div className="items">
     {items.map(item=>{
 return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem} displayItem={true}/>
