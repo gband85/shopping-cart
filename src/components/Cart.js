@@ -15,9 +15,12 @@ const deleteItem=(id)=>{
             <Navbar/>
             <div className="cart">
         {props.count>0 ? <h3># of items: {props.count }</h3> : <h3>Your Cart is empty!</h3>}
+        <h3>{props.total}</h3>
+        <div className="items">
         {props.cart.map(item=>{
-        return <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} deleteItem={deleteItem} itemQuantity={item.itemQuantity}/>
+        return <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} deleteItem={deleteItem} itemQuantity={item.itemQuantity} itemPrice={item.itemPrice}/>
         })}
+</div>
                         </div>
                 </div>        
         )
@@ -26,9 +29,12 @@ else {
     return (
         <div className="cart">
    {props.count>0 ? <h3># of items: {props.count}</h3> : null}
+   <h3>{props.total}</h3>
+   <div className="items">
     {props.cart.map(item=>{
-    return <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} deleteItem={deleteItem} itemQuantity={item.itemQuantity}/>
+    return <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} deleteItem={deleteItem} itemQuantity={item.itemQuantity} itemPrice={item.itemPrice}/>
     })}
+    </div>
                     </div>
     )
 }
