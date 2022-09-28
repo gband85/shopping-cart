@@ -60,8 +60,8 @@ newCart=[...cart,itemToAdd]
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")} />} />
-      <Route path="/cart" element={<Cart cart={cart} cartPage={true}/>} />
+      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/>} />
+      <Route path="/cart" element={<Cart cart={cart} cartPage={true} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/> } />
     </Routes>
   </BrowserRouter>
 
