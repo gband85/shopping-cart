@@ -16,26 +16,31 @@ const Shop=(props)=>{
       itemID: 122863,
       itemTitle: "Rubber Chicken",
       itemImage: chicken,
+      itemPrice: 9.95,
     },
     {
       itemID:  122864,
       itemTitle: "Groucho Glasses",
       itemImage: groucho,
+      itemPrice: 2.95,
     },
     {
       itemID:  122865,
       itemTitle: "USB Pet Rock",
       itemImage: usb_rock,
+      itemPrice: 6.95,
     },
     {
       itemID:  122866,
       itemTitle: "Useless Box",
       itemImage: useless,
+      itemPrice: 7.95,
     },
     {
       itemID:  122867,
       itemTitle: "Whoopee Cushion",
       itemImage: whoopee,
+      itemPrice: 1.95,
     },
   ]
   const CART_DATA=
@@ -76,10 +81,10 @@ const Shop=(props)=>{
         <div>
     <Navbar />
     <div className="mai">
-    <Cart cart={props.cart} deleteItem={deleteItem} count={props.count}/>
-    <div className="items">
+    <Cart cart={props.cart} deleteItem={deleteItem} count={props.count} total={props.total}/>
+    <div className="display-items">
     {items.map(item=>{
-return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem} displayItem={true}/>
+return  <Item itemID={item.itemID} itemTitle={item.itemTitle} itemImage={item.itemImage} addItem={addItem} displayItem={true} itemPrice={item.itemPrice}/>
     })}
        
         </div>
