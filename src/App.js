@@ -45,7 +45,13 @@ newCart=[...cart,itemToAdd]
  setCart(newCart);
 
   }
+  const deleteItem=(id)=>{
 
+  
+      const remainingItems = cart.filter((item) => id !== item.itemID);
+      console.log(remainingItems)
+    setCart(remainingItems);
+  }
 
 
     //  }, [cart])
@@ -60,8 +66,8 @@ newCart=[...cart,itemToAdd]
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/>} />
-      <Route path="/cart" element={<Cart cart={cart} cartPage={true} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/> } />
+      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={deleteItem} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/>} />
+      <Route path="/cart" element={<Cart cart={cart} deleteItem={deleteItem} cartPage={true} count={cart.length>0 ? cart.reduce((prev,curr)=>prev+curr.itemQuantity,0,) : 0}/> } />
     </Routes>
   </BrowserRouter>
 
