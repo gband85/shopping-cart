@@ -7,8 +7,12 @@ import Cart from './components/Cart';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [cart,setCart]=useState(JSON.parse(window.localStorage.getItem('cart')))
-
+  
+  const [cart,setCart]=useState(function(){
+    if (window.localStorage.getItem('cart')!==null)
+  return  JSON.parse(window.localStorage.getItem('cart'))
+  else return [];
+  })
   useEffect(() => {
     const data = window.localStorage.getItem('cart');
     if ( data !== null ) setCart(JSON.parse(data));
@@ -56,8 +60,8 @@ newCart=[...cart,itemToAdd]
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")}/>} />
-      <Route path="/cart" element={<Cart cart={cart}/>} />
+      <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart}  deleteItem={console.log("deleteItem")} />} />
+      <Route path="/cart" element={<Cart cart={cart} cartPage={true}/>} />
     </Routes>
   </BrowserRouter>
 
