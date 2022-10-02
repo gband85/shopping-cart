@@ -91,6 +91,7 @@ function App() {
           element={
             <Cart
               cart={cart}
+              addToCart={addToCart}
               deleteItem={deleteItem}
               cartPage={true}
               count={
