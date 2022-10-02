@@ -35,10 +35,21 @@ else {
   const handleChange = (e) => {
     setItem({ ...item, itemQuantity: parseInt(e.target.value) });
   };
-  const decreaseQuantity = ()=>setItem({ ...item, itemQuantity: item.itemQuantity-1});
-
-  const increaseQuantity = ()=>setItem({ ...item, itemQuantity: item.itemQuantity+1});
-
+  const decreaseQuantity = () => {
+    if (item.itemQuantity === 1) {
+      return;
+    }
+    setItem({ ...item, itemQuantity: item.itemQuantity - 1 });
+    if (!props.displayItem) {
+      props.addItem({...item,itemQuantity: -1})
+    }
+  };
+  const increaseQuantity = () => {
+    setItem({ ...item, itemQuantity: item.itemQuantity + 1 });
+    if (!props.displayItem) {
+      props.addItem({...item,itemQuantity: 1})
+    }
+  }
   if (props.displayItem) {
     return (
       <div className="card">
