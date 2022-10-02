@@ -1,0 +1,24 @@
+.cart {
+    background-color: brown;
+    position: absolute;
+    /* right: -10%; */
+    top: 101px;
+    right: 0;
+    transition: transform .5s;
+    z-index: 1000;
+    overflow: scroll;
+    height: 80vh;
+}
+.cart__items {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    /* background-color: brown; */
+}
+.cart.show {
+    transform: translate3d(0vw, 0, 0);
+}
+.cart.hide {
+transform: translate3d(100vw, 0, 0);
+}
