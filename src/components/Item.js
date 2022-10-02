@@ -28,8 +28,9 @@ else {
 });
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (item.itemQuantity < 1) return;
     // console.log(item)
-    setItem({...item, itemQuantity: 0})
+    setItem({ ...item, itemQuantity: 1 });
     props.addItem(item);
   };
   const handleChange = (e) => {
@@ -53,7 +54,7 @@ else {
   if (props.displayItem) {
     return (
       <div className="card">
-        <a href={props.href}>
+
           <img
             src={props.itemImage}
             className="card__img"
@@ -62,47 +63,70 @@ else {
           />
 
           {/* <div class="card__overlay"> */}
+          <div>
           <h3 className="card__title" id="itemTitle">
             {props.itemTitle}
           </h3>
           <h3>${props.itemPrice}</h3>
-          <form onSubmit={handleSubmit}>
-          <div className="number-input">
-         <button type="button" onClick={decreaseQuantity}>-</button>  
-         <input
-              type="number"
-              value={item.itemQuantity}
-              onChange={handleChange}
-              id="itemQuantity"
-            /><button type="button" onClick={increaseQuantity}>+</button>
+          </div>
+          <form onSubmit={handleSubmit} className="item-form">
+            <div className="number-input">
+              <button type="button" onClick={decreaseQuantity}>
+                -
+              </button>
+              <input
+                type="number"
+                value={item.itemQuantity}
+                onChange={handleChange}
+                id="itemQuantity"
+              />
+              <button type="button" onClick={increaseQuantity}>
+                +
+              </button>
             </div>
-            <button type="submit">Add to Cart</button>
+            <button type="submit" className="btn__add-item">Add to Cart</button>
           </form>
 
           {/* </div> */}
-        </a>
+        
       </div>
     );
   } else {
     return (
-      <div className="card">
-        <a href={props.href}>
+      <div className="card card--cart" style={{flexDirection: 'row'}}>
+
           <img
             src={props.itemImage}
-            className="card__img"
+            className="card__img card__img--small"
             alt=""
             id="itemImage"
           />
 
           {/* <div class="card__overlay"> */}
+          <div className="card__body">
+          <div>
           <h3 className="card__title" id="itemTitle">
             {props.itemTitle}
           </h3>
           <h3>${props.itemPrice}</h3>
-          <h3>Quantity: {props.itemQuantity}</h3>
+          </div>
+          <div className="number-input">
+              <button type="button" onClick={decreaseQuantity}>
+                -
+              </button>
+              <input
+                type="number"
+                value={item.itemQuantity}
+                onChange={handleChange}
+                id="itemQuantity"
+              />
+              <button type="button" onClick={increaseQuantity}>
+                +
+              </button>
+            </div>
           <button onClick={() => props.deleteItem(props.itemID)}>delete</button>
           {/* </div> */}
-        </a>
+        </div>
       </div>
     );
   }
