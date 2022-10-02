@@ -30,7 +30,7 @@
   }
   .navbar {
     display: flex;
-    position:fixed;
+    /* position:fixed; */
     padding: 20px;
     color: #fff;
     width: 100%;
@@ -98,4 +98,35 @@
   }
   .close__menu__btn:hover {
   color: rgb(205, 205, 205);
+  }
+  .cart-icon {
+    z-index: 5;
+    background-color: red;
+    height: fit-content;
+  }
+.nav-link-cart {
+  text-decoration: none;
+  height: min-content;
+  background-color: transparent;
+  border: none;
+}
+  .badge {
+    text-decoration: none;
+    padding: 0 3px;
+    background-color: #5c3996;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 100%;
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    right: 20px;
+    width: fit-content;
+    z-index: 6;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    height: fit-content;
   }
