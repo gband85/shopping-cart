@@ -1,6 +1,6 @@
 .cart {
     background-color: white;
-    position: absolute;
+    position: fixed;
     padding: 20px 0;
     /* right: -10%; */
     /* top: 101px; */
