@@ -12,6 +12,10 @@
   }
   .nav-link {
     color: white;
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    text-decoration: underline;
   }
   .nav__menu.show {
   transform: translateX(0);
@@ -30,10 +34,10 @@
   }
   .navbar {
     display: flex;
-    /* position:fixed; */
+    position:fixed;
     padding: 20px;
     color: #fff;
-    /* width: 100vw; */
+    width: 100vw;
     background-color: #006699;
     justify-content: space-between;
     font-size: 28px;
