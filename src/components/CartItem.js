@@ -65,7 +65,7 @@ const CartItem = (props) => {
                 +
               </button>
             </div>
-          <button onClick={() => props.deleteItem(props.itemID)}>delete</button>
+          <button className="delete__btn" onClick={() => props.deleteItem(props.itemID)}>delete</button>
           {/* </div> */}
         </div>
       </div>
