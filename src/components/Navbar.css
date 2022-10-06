@@ -33,7 +33,7 @@
     /* position:fixed; */
     padding: 20px;
     color: #fff;
-    width: 100%;
+    /* width: 100vw; */
     background-color: #006699;
     justify-content: space-between;
     font-size: 28px;
