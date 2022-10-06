@@ -124,12 +124,12 @@ const Shop = (props) => {
     console.log(remainingItems);
     setCart(remainingItems);
   };
-let visible;
+let overlay;
 if (cartVisibility) {
-  visible="display-items darken";
+  overlay="overlay open";
 }
 else {
-  visible="display-items";
+  overlay="overlay";
 }
 
   // console.log(items)
@@ -141,7 +141,8 @@ else {
                   : 0
               } toggleCart={toggleCart}/>
       <div className="container">
-      <div className={visible}>
+      <div className={overlay}></div>
+      <div className="display-items">
           {items.map((item) => {
             return (
               <ShopItem
@@ -173,6 +174,7 @@ else {
                   : 0
               }
           cartVisibility={cartVisibility}
+          toggleCart={toggleCart}
         /> 
 
       </div>
