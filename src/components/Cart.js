@@ -8,7 +8,9 @@ const Cart = (props) => {
     console.log("cart!");
     props.deleteItem(id);
   };
-
+  const handleClick=()=>{
+    props.toggleCart()
+      }
   // if (props.cartPage) {
   //   return (
   //     <div>
@@ -70,7 +72,11 @@ visible = "cart show";
             );
           })}
         </div>
+        <div className="btn-group">
         <h3 className="cart__total">Total: ${props.total}</h3>
+        <button className="btn btn-checkout">Checkout</button>
+        <button className="btn btn-close" onClick={handleClick}>Close</button>
+        </div>
       </div>
     );
   // }

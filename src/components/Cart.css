@@ -1,5 +1,5 @@
 .cart {
-    background-color: brown;
+    background-color: white;
     position: absolute;
     padding: 20px 0;
     /* right: -10%; */
@@ -13,12 +13,16 @@
     /* overflow: scroll; */
     height: 80vh;
     width: 400px;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    margin-top: 95px;
+    overflow-y: scroll;
 }
 .cart__items {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    gap: 10px;
+    gap: 30px;
     /* background
     -color: brown; */
 }
@@ -34,4 +38,22 @@ display: none;
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
+}
+.btn {
+     height: 50px;
+     border-radius: 5px;
+}
+.btn-close {
+background-color: black;
+color: white;
+}
+.btn-checkout {
+   background-color: black;
+   color: white;
+}
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0 10px;
 }
