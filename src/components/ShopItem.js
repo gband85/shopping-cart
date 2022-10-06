@@ -69,7 +69,7 @@ const ShopItem = (props) => {
                 +
               </button>
             </div>
-            <button type="submit" className="btn__add-item">Add to Cart</button>
+            <button type="submit" className="btn btn__add-item">Add to Cart</button>
           </form>
 
           {/* </div> */}
