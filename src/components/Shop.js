@@ -1,4 +1,4 @@
-import Item from "./Item";
+import ShopItem from "./ShopItem";
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import Navbar from "./Navbar";
@@ -75,49 +75,120 @@ const Shop = (props) => {
   const [items, setItems] = useState(ITEM_DATA);
   const [cartVisibility, setCartVisibility]=useState(false);
 
-  const addItem = (itemToAdd) => {
-    props.addToCart(itemToAdd);
+  // const addItem = (itemToAdd) => {
+  //   props.addToCart(itemToAdd);
 
-    // console.log(cart)
-  };
-  const deleteItem = (id) => {
-    props.deleteItem(id);
-    // console.log("shop!")
-    // const remainingItems = cart.filter((item) => id !== item.itemID);
-    // setCart(remainingItems);
-  };
+  //   // console.log(cart)
+  // };
+  // const deleteItem = (id) => {
+  //   props.deleteItem(id);
+  //   // console.log("shop!")
+  //   // const remainingItems = cart.filter((item) => id !== item.itemID);
+  //   // setCart(remainingItems);
+  // };
   const toggleCart=()=>{
     console.log("go!")
     setCartVisibility(!cartVisibility)
 
   }
+
+
+
+  const [cart, setCart] = useState(function () {
+    if (window.localStorage.getItem("cart") !== null)
+      return JSON.parse(window.localStorage.getItem("cart"));
+    else return [];
+  });
+  useEffect(() => {
+    const data = window.localStorage.getItem("cart");
+    if (data !== null) setCart(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (itemToAdd) => {
+    let newCart;
+    const exist = cart.some(function (cartItem) {
+      return cartItem.itemID == itemToAdd.itemID;
+    });
+    // console.log(exist)
+    if (exist) {
+      newCart = cart.map(function (cartItem) {
+        if (cartItem.itemID == itemToAdd.itemID) {
+          return {
+            ...cartItem,
+            itemQuantity: cartItem.itemQuantity + itemToAdd.itemQuantity,
+          };
+          //  cartItem;
+          // console.log(cartItem)
+        }
+        return cartItem;
+      });
+      console.log(newCart);
+    } else {
+      newCart = [...cart, itemToAdd];
+    }
+
+    setCart(newCart);
+  };
+  const deleteItem = (id) => {
+    const remainingItems = cart.filter((item) => id !== item.itemID);
+    console.log(remainingItems);
+    setCart(remainingItems);
+  };
+let visible;
+if (cartVisibility) {
+  visible="display-items darken";
+}
+else {
+  visible="display-items";
+}
+
   // console.log(items)
   return (
     <div>
-      <Navbar count={props.count} toggleCart={toggleCart}/>
-      <div className="mai">
-    <Cart
-        addItem={addItem}
-          cart={props.cart}
-          deleteItem={deleteItem}
-          count={props.count}
-          total={props.total}
-          cartVisibility={cartVisibility}
-        /> 
-        <div className="display-items">
+      <Navbar               count={
+                cart.length > 0
+                  ? cart.reduce((prev, curr) => prev + curr.itemQuantity, 0)
+                  : 0
+              } toggleCart={toggleCart}/>
+      <div className="container">
+      <div className={visible}>
           {items.map((item) => {
             return (
-              <Item
+              <ShopItem
                 itemID={item.itemID}
                 itemTitle={item.itemTitle}
                 itemImage={item.itemImage}
-                addItem={addItem}
+                addItem={addToCart}
                 displayItem={true}
                 itemPrice={item.itemPrice}
               />
             );
           })}
         </div>
+    <Cart
+        addItem={addToCart}
+          cart={cart}
+          deleteItem={deleteItem}
+          count={
+                cart.length > 0
+                  ? cart.reduce((prev, curr) => prev + curr.itemQuantity, 0)
+                  : 0
+              }
+              total={
+                cart.length > 0
+                  ? cart.reduce(
+                      (prev, curr) => prev + curr.itemPrice * curr.itemQuantity,
+                      0
+                    )
+                  : 0
+              }
+          cartVisibility={cartVisibility}
+        /> 
+
       </div>
     </div>
   );
