@@ -75,25 +75,11 @@ const Shop = (props) => {
   const [items, setItems] = useState(ITEM_DATA);
   const [cartVisibility, setCartVisibility]=useState(false);
 
-  // const addItem = (itemToAdd) => {
-  //   props.addToCart(itemToAdd);
-
-  //   // console.log(cart)
-  // };
-  // const deleteItem = (id) => {
-  //   props.deleteItem(id);
-  //   // console.log("shop!")
-  //   // const remainingItems = cart.filter((item) => id !== item.itemID);
-  //   // setCart(remainingItems);
-  // };
   const toggleCart=()=>{
     console.log("go!")
     setCartVisibility(!cartVisibility)
 
   }
-
-
-
   const [cart, setCart] = useState(function () {
     if (window.localStorage.getItem("cart") !== null)
       return JSON.parse(window.localStorage.getItem("cart"));
