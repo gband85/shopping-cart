@@ -29,8 +29,8 @@ else {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (item.itemQuantity < 1) return;
-    // console.log(item)
-    setItem({ ...item, itemQuantity: 1 });
+
+    // setItem({ ...item, itemQuantity: 1 });
     props.addItem(item);
   };
   const handleChange = (e) => {
@@ -71,7 +71,7 @@ else {
           </div>
           <form onSubmit={handleSubmit} className="item-form">
             <div className="number-input">
-              <button type="button" onClick={decreaseQuantity}>
+              <button type="button" onClick={decreaseQuantity} className="number-input__button">
                 -
               </button>
               <input
@@ -79,8 +79,9 @@ else {
                 value={item.itemQuantity}
                 onChange={handleChange}
                 id="itemQuantity"
+                className="number-input__field"
               />
-              <button type="button" onClick={increaseQuantity}>
+              <button type="button" onClick={increaseQuantity} className="number-input__button">
                 +
               </button>
             </div>
@@ -93,7 +94,7 @@ else {
     );
   } else {
     return (
-      <div className="card card--cart" style={{flexDirection: 'row'}}>
+      <div className="card card--cart">
 
           <img
             src={props.itemImage}
@@ -111,7 +112,7 @@ else {
           <h3>${props.itemPrice}</h3>
           </div>
           <div className="number-input">
-              <button type="button" onClick={decreaseQuantity}>
+              <button className="number-input__button" type="button" onClick={decreaseQuantity}>
                 -
               </button>
               <input
@@ -119,8 +120,9 @@ else {
                 value={item.itemQuantity}
                 onChange={handleChange}
                 id="itemQuantity"
+                className="number-input__field number-input__field--small"
               />
-              <button type="button" onClick={increaseQuantity}>
+              <button className="number-input__button" type="button" onClick={increaseQuantity}>
                 +
               </button>
             </div>
