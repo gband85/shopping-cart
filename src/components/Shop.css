@@ -1,8 +1,16 @@
 .display-items {
-    display: flex;
+   display: flex;
     flex-wrap: wrap;
-    background-color: black;
-    gap: 10px;
+    gap: 40px;
     padding: 10px;
-    position: relative;
+    max-width: 1200px;
+    justify-content: center;
+}
+.container {
+    display: flex;
+    background-color: black;
+    justify-content: center;
+}
+.display-items.darken {
+    opacity: 0.3;
 }
