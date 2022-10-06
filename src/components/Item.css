@@ -3,11 +3,14 @@
   border-radius: 15px;
   /* background-color: rgb(8, 8, 88); */
   padding: 20px;
-  background-color: blue;
-  color: white;
+  /* background-color:  */
+  /* color: white; */
   display: flex;
   flex-direction: column;
+  /* border: 1px solid black; */
   gap: 20px;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 .card--cart {
   flex-direction: row;
@@ -15,6 +18,20 @@
 .card__body {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.delete__btn {
+background-color: transparent;
+border: none;
+/* color: white; */
+cursor: pointer;
+}
+.delete__btn:hover {
+  text-decoration: underline;
+  
 }
 .card__img {
   max-width: 300px;
@@ -39,11 +56,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .number-input {
-  border: 2px solid #ddd;
-  /* display: flex; */
+  border: 1px solid #ddd;
+  display: flex;
   justify-content: center;
   width: fit-content;
   align-items: center;
+  text-align: center;
+
 }
 
 
@@ -59,10 +78,14 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   margin: 0;
   position: relative;
-  color: white;
-  /* font-size: 2rem; */
-}
+  /* color: white; */
+  font-size: 1.5rem;
+  font-weight: bold;
 
+}
+.number-input__button:hover {
+opacity: .6;
+}
 /* .number-input button:before,
 .number-input button:after {
   display: inline-block;
@@ -90,13 +113,14 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+  outline: none;
 }
 .number-input__field--small {
   /* font-size: 1.3rem; */
   /* height: 3rem; */
   }
 .card__title {
-  color: white;
+  /* color: white; */
 }
 .item-form {
   display: flex;
@@ -107,4 +131,10 @@ gap: 20px;
 .btn__add-item {
   width: 100%;
   font-size: 32px;
+  background-color: black;
+  color: white;
+}
+.btn {
+  height: 50px;
+  border-radius: 5px;
 }
