@@ -7,7 +7,6 @@ const Navbar=(props)=>{
 props.toggleCart()
   }
     return (
-<header>
    <div className = "navbar">
     <h1 className = "navbar__brand"><a href="index.html">Shop Inc.</a></h1>    
       {/* create div */}
@@ -47,7 +46,6 @@ props.toggleCart()
 
 </div>
 
-    </header>
     )
 }
 
