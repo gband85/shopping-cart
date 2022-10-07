@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
 import Home from "./components/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 function App() {
   
   return (
-    <BrowserRouter>
+    
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/shop" element={<Shop />}/>
@@ -38,7 +38,7 @@ function App() {
           }
         /> */}
       </Routes>
-    </BrowserRouter>
+    
   );
 }
 
