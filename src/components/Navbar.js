@@ -1,6 +1,7 @@
 import "./Navbar.css";
 import Icon from '@mdi/react'
 import { mdiCart } from '@mdi/js'
+import { Link } from 'react-router-dom';
 
 const Navbar=(props)=>{
   const handleClick=()=>{
@@ -8,18 +9,20 @@ props.toggleCart()
   }
     return (
    <div className = "navbar">
-    <h1 className = "navbar__brand"><a href="index.html">Shop Inc.</a></h1>    
+    <h1 className = "navbar__brand"><Link to="/">Shop Inc.</Link></h1>    
       {/* create div */}
      <nav className = "navbar__nav">
       {/* //create navbuttons */}
 <ul className = "navbar__nav__list">
    {/* //   iterate through args,create li with button with arg */}
    <li className = "menu-item">
-      <a className = "nav-link" href="/">Home</a>
+      {/* <a className = "nav-link" href="/">Home</a> */}
+      <Link to='/'>Home</Link>
       </li>
 
         <li className = "menu-item">
-      <a className = "nav-link" href="/shop">Shop</a>
+        <Link to='/shop'>Shop</Link>
+      {/* <a className = "nav-link" href="/shop">Shop</a> */}
       </li>
 
       <li className = "menu-item">
