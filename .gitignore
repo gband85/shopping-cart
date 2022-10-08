@@ -22,5 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 notes.txt
-.vscode/launch.json
+.vscode
 package-lock.json
+/public
+/src
+package.json
+README.md
