@@ -17,11 +17,11 @@ props.toggleCart()
    {/* //   iterate through args,create li with button with arg */}
    <li className = "menu-item">
       {/* <a className = "nav-link" href="/">Home</a> */}
-      <Link to='/'>Home</Link>
+      <Link to='/' className = "nav-link">Home</Link>
       </li>
 
         <li className = "menu-item">
-        <Link to='/shop'>Shop</Link>
+        <Link to='/shop' className = "nav-link">Shop</Link>
       {/* <a className = "nav-link" href="/shop">Shop</a> */}
       </li>
 
