@@ -146,13 +146,10 @@ else {
           {items.map((item) => {
             return (
               <ShopItem
-                itemID={item.itemID}
-                itemTitle={item.itemTitle}
-                itemImage={item.itemImage}
+                item={item}
                 addItem={addToCart}
                 displayItem={true}
-                itemPrice={item.itemPrice}
-              />
+                              />
             );
           })}
         </div>
