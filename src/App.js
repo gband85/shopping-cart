@@ -4,18 +4,25 @@ import { Link, Routes, Route, createBrowserRouter, RouterProvider } from "react-
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { useEffect, useState } from "react";
+import Root from "./components/Root";
 
 function App() {
   const router = createBrowserRouter([
     {
-       path: "/",
-      element: <Home/>,
+      // path: "/",
+      element: <Root/>,
+    
+    children: [
+          {
+      path: "/",
+     element: <Home/>,
     },
     {
       path: "/shop",
       element: <Shop/>
     }
-  
+    ]
+    },
   ]);
   return (
     <RouterProvider router={router} />
