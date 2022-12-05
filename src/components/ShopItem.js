@@ -2,45 +2,34 @@ import { useState } from "react";
 import "./Item.css";
 
 const ShopItem = (props) => {
-  const [item, setItem] = useState(
-      
-    {
-    itemID: props.itemID,
-    itemQuantity: 1,
-    itemTitle: props.itemTitle,
-    itemImage: props.itemImage,
-    itemPrice: props.itemPrice,
-  }
-      );
+  const [itemQuantity, setItemQuantity] = useState(1);
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (item.itemQuantity < 1) return;
 
-    
-    props.addItem(item);
-    setItem({ ...item, itemQuantity: 1 });
+     props.addItem({...props.item,itemQuantity});
+    setItemQuantity(1);
   };
   const handleChange = (e) => {
-    setItem({ ...item, itemQuantity: parseInt(e.target.value) });
+    setItemQuantity(parseInt(e.target.value));
   };
   const decreaseQuantity = () => {
-    if (item.itemQuantity === 1) {
+    if (itemQuantity === 1) {
       return;
     }
-    setItem({ ...item, itemQuantity: item.itemQuantity - 1 });
+    setItemQuantity(itemQuantity - 1);
 
   };
   const increaseQuantity = () => {
-    setItem({ ...item, itemQuantity: item.itemQuantity + 1 });
+    setItemQuantity(itemQuantity + 1 );
 
   }
     return (
       <div className="card">
 
           <img
-            src={props.itemImage}
+            src={props.item.itemImage}
             className="card__img"
             alt=""
             id="itemImage"
@@ -49,9 +38,9 @@ const ShopItem = (props) => {
           {/* <div class="card__overlay"> */}
           <div>
           <h3 className="card__title" id="itemTitle">
-            {props.itemTitle}
+            {props.item.itemTitle}
           </h3>
-          <h3>${props.itemPrice}</h3>
+          <h3>${props.item.itemPrice}</h3>
           </div>
           <form onSubmit={handleSubmit} className="item-form">
             <div className="number-input">
@@ -60,7 +49,7 @@ const ShopItem = (props) => {
               </button>
               <input
                 type="number"
-                value={item.itemQuantity}
+                value={itemQuantity}
                 onChange={handleChange}
                 id="itemQuantity"
                 className="number-input__field"
