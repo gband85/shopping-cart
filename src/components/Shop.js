@@ -73,87 +73,29 @@ const Shop = (props) => {
   ];
 
   const [items, setItems] = useState(ITEM_DATA);
-  const [cartVisibility, setCartVisibility]=useState(false);
-
-  const toggleCart=()=>{
-    console.log("go!")
-    setCartVisibility(!cartVisibility)
-
-  }
-  const [cart, setCart] = useState(function () {
-    if (window.localStorage.getItem("cart") !== null)
-      return JSON.parse(window.localStorage.getItem("cart"));
-    else return [];
-  });
-  useEffect(() => {
-    const data = window.localStorage.getItem("cart");
-    if (data !== null) setCart(JSON.parse(data));
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  const addToCart = (itemToAdd) => {
-    let newCart;
-    const exist = cart.some(function (cartItem) {
-      return cartItem.itemID == itemToAdd.itemID;
-    });
-    // console.log(exist)
-    if (exist) {
-      newCart = cart.map(function (cartItem) {
-        if (cartItem.itemID == itemToAdd.itemID) {
-          return {
-            ...cartItem,
-            itemQuantity: cartItem.itemQuantity + itemToAdd.itemQuantity,
-          };
-          //  cartItem;
-          // console.log(cartItem)
-        }
-        return cartItem;
-      });
-      console.log(newCart);
-    } else {
-      newCart = [...cart, itemToAdd];
-    }
-
-    setCart(newCart);
-  };
-  const deleteItem = (id) => {
-    const remainingItems = cart.filter((item) => id !== item.itemID);
-    console.log(remainingItems);
-    setCart(remainingItems);
-  };
-let overlay;
-if (cartVisibility) {
-  overlay="overlay open";
-}
-else {
-  overlay="overlay";
-}
 
   // console.log(items)
   return (
-    <div>
-      <Navbar               count={
+    <div className="shop">
+      {/* <Navbar               count={
                 cart.length > 0
                   ? cart.reduce((prev, curr) => prev + curr.itemQuantity, 0)
                   : 0
-              } toggleCart={toggleCart}/>
-      <div className="container">
-      <div className={overlay}></div>
+              } toggleCart={toggleCart}/> */}
+      {/* <div className="container"> */}
+      {/* <div className={overlay}></div> */}
       <div className="display-items">
           {items.map((item) => {
             return (
               <ShopItem
                 item={item}
-                addItem={addToCart}
+                addToCart={props.addToCart}
                 displayItem={true}
                               />
             );
           })}
         </div>
-    <Cart
+    {/* <Cart
         addItem={addToCart}
           cart={cart}
           deleteItem={deleteItem}
@@ -172,9 +114,9 @@ else {
               }
           cartVisibility={cartVisibility}
           toggleCart={toggleCart}
-        /> 
+        />  */}
 
-      </div>
+      {/* </div> */}
     </div>
   );
 };
