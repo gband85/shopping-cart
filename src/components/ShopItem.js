@@ -8,7 +8,7 @@ const ShopItem = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-     props.addItem({...props.item,itemQuantity});
+     props.addToCart({...props.item,itemQuantity});
     setItemQuantity(1);
   };
   const handleChange = (e) => {
