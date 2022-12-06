@@ -1,5 +1,5 @@
-.main {
+.home {
     background: url('../images/mike-petrucci-c9FQyqIECds-unsplash.jpeg') center/cover ;
-
+width: 100vw;
     height: 100vh;
 }
