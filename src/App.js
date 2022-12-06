@@ -5,6 +5,7 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { useEffect, useState } from "react";
 import Root from "./components/Root";
+import ErrorPage from "./ErrorPage";
 
 function App() {
   const [cart, setCart] = useState(function () {
@@ -59,7 +60,7 @@ function App() {
           ? cart.reduce((prev, curr) => prev + curr.itemQuantity, 0)
           : 0
       }/>,
-    
+    errorElement: <ErrorPage/>,
     children: [
           {
       path: "/",
